@@ -1,0 +1,104 @@
+=== Testing OpenAI Compression ===
+IMP: typing.List, typing.Optional, typing.Dict, dataclasses.dataclass, heapq
+
+TYPES:
+cls TaskItem:
+    priority: int
+    description: str
+    completed: bool / Default: False
+cls PriorityTaskManager:
+    tasks: List[Tuple[int, TaskItem]]
+    task_index: Dict[str, int]
+
+FN:
+PriorityTaskManager::__init__ => ...
+PriorityTaskManager::add_task(priority: int, description: str) => None:
+    Create TaskItem(priority, description)
+    heapq.heappush on tasks with task as (-priority, task)
+    Add description:index to task_index
+PriorityTaskManager::get_highest_priority => Optional[TaskItem]:
+    ret None if tasks empty else ret tasks[0][1]
+PriorityTaskManager::mark_completed(description: str) => bool:
+   Check description in task_index:
+    if YES: mark corresponding task as completed and ret True
+    if NO: ret False
+
+FLOW:
+Stack based job scheduler where each job has priority, description and is either completed or not
+
+DEPS:
+Heap data structure, dataclasses to manage data and heapq for managing tasks with different priorities.
+
+=== Testing OpenAI Decompression ===
+Here is the decompressed Python program that is a stack-based job scheduler utilizing a heap data structure:
+
+```python
+import typing
+from typing import List, Optional, Dict
+from dataclasses import dataclass
+import heapq
+
+@dataclass
+class TaskItem:
+    """A simple TaskItem class that has priority, description and completed status."""
+
+    #The priority of the item
+    priority: int
+    # Description of the item
+    description: str
+    # Is the item completed?
+    completed: bool = False
+
+
+class PriorityTaskManager:
+    """The main PriorityTaskManager class. 
+    It handles task priority and completion status."""
+
+    def __init__(self) -> None:
+        """Initializes the tasks list and task_index dictionary."""
+        self.tasks: List[Tuple[int, TaskItem]] = []
+        self.task_index: Dict[str, int] = {}
+
+    def add_task(self, priority: int, description: str) -> None:
+        """Creates a TaskItem object and adds it to the tasks list and task_index dictionary.
+
+        Args:
+            priority (int): The priority of the task object.
+            description (str): The description of the task object.
+        """
+        task = TaskItem(priority, description)
+        heapq.heappush(self.tasks, (-priority, task))
+        self.task_index[description] = len(self.tasks) - 1
+
+    def get_highest_priority(self) -> Optional[TaskItem]:
+        """Returns the highest priority TaskItem object.F
+
+        Returns:
+            Optional[TaskItem]: The highest priority TaskItem object.
+        """
+        return None if not self.tasks else self.tasks[0][1]
+
+    def mark_completed(self, description: str) -> bool:
+        """Marks a specific task as completed.
+
+        Args:
+            description (str): The description of the task object.
+
+        Returns:
+            bool: Whether the task was successfully marked as completed.
+        """
+        if description in self.task_index:
+            priority, task_item = self.tasks[self.task_index[description]]
+            task_item.completed = True
+            return True
+        return False
+```
+
+In the above Python script:
+- The PriorityTaskManager class uses a heap data structure to manage tasks with different priorities.
+- TaskItem is a simple data class to manage the task data.
+- The __init__ function is a standard implementation pattern in Python to initialize an instance of a class.
+- All functions are annotated with type hints and have docstrings explaining their functionality.
+- The add_task function adds a new task to the tasks heap and task_index dictionary.
+- The get_highest_priority method returns the task with the highest priority.
+- The mark_completed method tries to find a task with the given description and mark it as completed if found.
