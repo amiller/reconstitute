@@ -28,20 +28,14 @@ deps-check:
 	@command -v $(PYTHON) >/dev/null 2>&1 || { echo "Python 3 is required but not installed. Aborting."; exit 1; }
 	@echo "Python OK. Run 'make install-deps' to install required packages."
 
-# Check for .env file and create if needed
+# Check for LLM_API_KEY environment variable
 env-check:
-	@if [ ! -f $(ENV_FILE) ]; then \
-		echo "$(ENV_FILE) not found. Creating from template..."; \
-		cp $(ENV_TEMPLATE) $(ENV_FILE); \
-		echo "Created $(ENV_FILE) from template. Please edit it to add your API key."; \
-		echo "Edit the $(ENV_FILE) file and add your LLM API key, then run 'make build' again."; \
+	@if [ -z "$$LLM_API_KEY" ]; then \
+		echo "LLM_API_KEY environment variable is not set."; \
+		echo "Please set the LLM_API_KEY environment variable before proceeding."; \
 		exit 1; \
 	fi
-	@if grep -q "your_api_key_here" $(ENV_FILE); then \
-		echo "Please edit the $(ENV_FILE) file to add your actual API key."; \
-		echo "Replace 'your_api_key_here' with your real API key."; \
-		exit 1; \
-	fi
+	@echo "LLM_API_KEY is set. Proceeding..."
 
 # Make scripts executable
 scripts-executable:
@@ -112,7 +106,7 @@ help:
 	@echo "LLM-built Calculator Makefile"
 	@echo ""
 	@echo "Available targets:"
-	@echo "  make setup        - Setup project (check dependencies and create .env file if needed)"
+	@echo "  make setup        - Setup project (check dependencies and environment variables)"
 	@echo "  make install-deps - Install required Python dependencies"
 	@echo "  make build        - Generate and process all code (default)"
 	@echo "  make generate     - Generate code from prompts"
@@ -123,7 +117,7 @@ help:
 	@echo "  make help         - Show this help message"
 	@echo ""
 	@echo "Configuration:"
-	@echo "  Edit .env file to set your LLM API key and other settings"
+	@echo "  Set the LLM_API_KEY environment variable to your API key"
 	@echo ""
 	@echo "Example usage:"
 	@echo "  make setup        # First time setup"
