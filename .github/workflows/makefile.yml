@@ -19,6 +19,8 @@ jobs:
 
     - name: Build
       run: make
+      env:
+         LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
     - name: Run check
       run: make test
