@@ -1,0 +1,27 @@
+Generate the JavaScript business logic for a calculator application with the following requirements:
+
+Core Functionality:
+- Support for basic operations: addition, subtraction, multiplication, and division
+- Proper handling of the order of operations (PEMDAS)
+- Ability to chain multiple operations
+- Decimal number support with proper precision handling
+
+User Interaction:
+- Real-time display updates as numbers and operations are entered
+- Clear button (C) resets the calculator to initial state
+- Support for negating numbers (± button)
+- Keyboard input support matching the button interface
+
+Error Handling:
+- Graceful handling of division by zero (display "Error")
+- Prevention of multiple decimal points in a single number
+- Maximum digit limitation to prevent display overflow
+- Clear error states when new calculations begin
+
+Edge Cases:
+- Proper handling of operations on the result of previous calculations
+- Correct behavior when pressing equals multiple times
+- Handling leading zeros and decimal points appropriately
+- Preventing multiple operators entered consecutively
+
+The code should be well-structured, maintainable, and thoroughly commented to explain the logic. 

@@ -1,0 +1,8 @@
+# LLM-built Calculator Python dependencies
+
+# HTTP requests library for LLM API calls
+requests>=2.28.0
+
+# Environment variable management
+python-dotenv>=0.20.0 
+openai

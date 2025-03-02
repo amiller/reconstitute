@@ -1,0 +1,19 @@
+Generate a HTML5 calculator interface with:
+- Display screen at top showing current input and result
+- Grid layout with 4 columns
+- Number buttons 0-9
+- Operation buttons: +, -, ×, ÷
+- Additional buttons: . (decimal), =, C (clear), ± (negate)
+- ARIA accessibility labels
+- Semantic HTML structure
+- Mobile responsive design with clean, modern styling
+- Button hover and active states for better user feedback
+- Support for keyboard input (numbers, operators, Enter for equals)
+
+The calculator should have a professional appearance with:
+- Soft shadows for depth
+- Clear typography
+- Consistent spacing
+- Color scheme that's easy on the eyes (light theme with dark text)
+
+The HTML should be structured for clarity and maintainability. 

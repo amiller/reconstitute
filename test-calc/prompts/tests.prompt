@@ -1,0 +1,60 @@
+Generate JavaScript test cases for a calculator application with the following requirements:
+
+Basic Operation Tests:
+- Addition of positive integers (e.g., 5 + 3 = 8)
+- Subtraction with positive result (e.g., 8 - 3 = 5)
+- Multiplication of integers (e.g., 4 × 5 = 20)
+- Division with integer result (e.g., 10 ÷ 2 = 5)
+- Division with decimal result (e.g., 5 ÷ 2 = 2.5)
+
+Decimal Number Tests:
+- Addition with decimal numbers (e.g., 3.5 + 2.1 = 5.6)
+- Proper decimal precision (avoiding floating-point errors)
+- Starting with decimal point (e.g., .5 + .5 = 1)
+
+Order of Operations Tests:
+- Evaluating expressions with proper PEMDAS (e.g., 2 + 3 × 4 = 14)
+- Chained operations (e.g., 5 + 3 - 2 × 4 ÷ 2 = 3)
+
+Edge Case Tests:
+- Division by zero (should display "Error")
+- Multiple decimal points (should prevent invalid input)
+- Very large numbers (testing display limitations)
+- Very small decimal numbers (testing precision)
+
+User Interaction Tests:
+- Clear button functionality (C)
+- Number negation (± button)
+- Equals button behavior on repeated press
+- Keyboard input for all operations
+
+Error Recovery Tests:
+- Testing recovery after errors (e.g., after division by zero)
+- Testing input after reaching maximum digit limit
+
+Use a modern JavaScript testing framework (Jest or similar) with clear test descriptions and expected outputs. Each test should verify a specific functionality and provide appropriate failure messages.
+
+## Thinking Phase
+Before generating any test code:
+1. Consider the structure of the files being tested
+2. Identify the necessary testing frameworks and configurations
+3. Plan the proper import/export patterns based on the file structure
+4. Determine how components are exported/imported between files
+
+## Files in the Project
+- app.js: Contains the main application logic
+- index.html: Main HTML entry point
+- style.css: Application styling
+
+## Test Requirements
+[your original test requirements here]
+
+## Implementation Details
+- The Calculator class is defined in app.js and exported as default export
+- The file structure is:
+  - generated/app.js: Contains the Calculator implementation
+  - generated/tests/calculator.test.js: Will contain the tests
+
+Your tests should use the appropriate import statement to match this structure.
+
+Generate a complete test file that will work with Jest and properly imports the components from their respective files. 
